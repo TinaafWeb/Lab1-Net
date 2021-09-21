@@ -219,11 +219,14 @@ namespace Lab1
 
             //print the words that start with j
             Console.WriteLine("The number of words that start with 'j': {0}", startJwords);
-           
+            Console.WriteLine();
+
 
         }
 
-
+        /*
+         * this method counts and shows the words that has charecters greater than 4
+         */
         private static void fourChars(List<string> words)
         {
             var q = from x in words where x.Length > 4 select x;
@@ -236,14 +239,9 @@ namespace Lab1
             }
 
             Console.WriteLine("The number of words longer than 4 characters: {0}", wordsWithFourChar);
+            Console.WriteLine();
 
         }
-
-
-
-
-
-
 
 
     }
