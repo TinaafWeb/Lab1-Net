@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -38,6 +36,7 @@ namespace Lab1
 
             
             Console.WriteLine("Enter your choice: ");
+ 
         }
 
         private static bool mainMenu()
@@ -71,7 +70,7 @@ namespace Lab1
             }
             else if (line == "6")
             {
-                
+                startsWithJ(words);
             }
             else if (line == "7")
             {
@@ -155,7 +154,7 @@ namespace Lab1
                     }
                 }
             }
-            time.Stop();//time stops
+            time.Stop();
             Console.WriteLine("Elapsed Time: {0} ms", time.ElapsedMilliseconds);
             Console.WriteLine();
             return words;
@@ -173,7 +172,7 @@ namespace Lab1
             var q = words.OrderBy(str => str).ToList();
             words = q;
 
-            time.Stop(); //time stops
+            time.Stop(); // time stops
             Console.WriteLine("Elapsed Time: {0} ms", time.ElapsedMilliseconds);
             return words;
         }
@@ -199,6 +198,29 @@ namespace Lab1
                 Console.WriteLine(word);
             }
             Console.WriteLine();
+        }
+
+        /*
+         * this method counts the words that start with j
+         */
+        private static void startsWithJ(List<string> words)
+        {   
+
+            var q = from x in words where x.StartsWith("j") select x;
+
+            //counting the words
+            int startJwords = 0;
+
+            foreach (var word in q)
+            {
+                Console.WriteLine(word);
+                startJwords++;
+            }
+
+            //print the words that start with j
+            Console.WriteLine("The number of words that start with 'j': {0}", startJwords);
+           
+
         }
 
     }
