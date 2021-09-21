@@ -236,7 +236,7 @@ namespace Lab1
                 wordsWithFourChar++;
             }
 
-            Console.WriteLine("The number of words longer than 4 characters: {0}", wordsWithFourChar);
+            Console.WriteLine("The number of words longer than 4 characters: {0}", q.Count());
             Console.WriteLine();
 
         }
@@ -254,10 +254,10 @@ namespace Lab1
             foreach (var word in q)
             {
                 Console.WriteLine(word);
-                wordEndD++;
+               wordEndD++;
             }
 
-            Console.WriteLine("The number of words that end with 'd': {0}", wordEndD);
+            Console.WriteLine("The number of words that end with 'd': {0}", q.Count());
             Console.WriteLine();
         }
 
@@ -281,7 +281,7 @@ namespace Lab1
                 threecharsW++;
             }
 
-            Console.WriteLine("The number of words less than 3 characters and starts with 'a': {0}", threecharsW);
+            Console.WriteLine("The number of words less than 3 characters and starts with 'a': {0}", q.Count());
             Console.WriteLine();
         }
 
