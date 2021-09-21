@@ -4,83 +4,211 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Lab1
 {
     class Program
     {
-
-
+        private static List<string> words = new List<string>();
         static void Main(string[] args)
 
         {
 
-            int choice = 0;//the menu choices
+            bool showMenu = true;
 
+            while (showMenu)
+            {
+                showMenu = mainMenu();
+            }
+
+        }
+        private static void printMenu()
+        {
             //print a header 
             Console.WriteLine("***********************************");
             Console.WriteLine("*******An Introduction to C#*********");
             Console.WriteLine("************Choices****************");
             Console.WriteLine("***********************************");
 
-            while (choice < 10)
+
+            //print the menu
+            Console.WriteLine(" 1 - Import Words from File\n 2 - Bubble Sort words\n 3 - LINQ / Lambda sort words\n 4 - Count the Distinct Words\n 5 - Take the first 10 words\n 6 - Get the number of words that start with 'j' and display the count\n 7 - Get and display of words that end with 'd' and display the count\n 8 - Get and display of words that are greater than 4 characters long and display the count\n 9 - Get and display of words that are less than 3 characters long and start with the letter 'a', and display the count\n x – Exit");
+            Console.WriteLine("***********************************");
+
+            
+            Console.WriteLine("Enter your choice: ");
+        }
+
+        private static bool mainMenu()
+        {
+            printMenu();
+            string line = Console.ReadLine();
+            Console.WriteLine("***********************************");
+            Console.Clear();
+
+            if (line == "1")
             {
-               //print the menu
-                Console.WriteLine(" 1 - Import Words from File\n 2 - Bubble Sort words\n 3 - LINQ / Lambda sort words\n 4 - Count the Distinct Words\n 5 - Take the first 10 words\n 6 - Get the number of words that start with 'j' and display the count\n 7 - Get and display of words that end with 'd' and display the count\n 8 - Get and display of words that are greater than 4 characters long and display the count\n 9 - Get and display of words that are less than 3 characters long and start with the letter 'a', and display the count\n x – Exit");
-                Console.WriteLine("***********************************");
+                importWordsFromFile();
+            }
+            else if (line == "2")
+            {
+                
+                BubbleSort(words);
+            }
+            else if (line == "3")
+            {
+                LINQLAMBDASortWords(words);
 
-                //getting the user input
-                Console.WriteLine("Enter your choice: ");
-                choice = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("***********************************");
+            }
+            else if (line == "4")
+            {
+                countTheDistinctWords(words);
+            }
+            else if (line == "5")
+            {
+                takeTheFirst10Word(words);
+            }
+            else if (line == "6")
+            {
+                
+            }
+            else if (line == "7")
+            {
+                
+            }
+            else if (line == "8")
+            {
+                
+            }
+            else if (line == "9")
+            {
+                
+            }
+            else if (line == "x")
+            {
+                Console.WriteLine("Exit");
+                return false;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid Input");
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine();
 
 
-                //import words from file
-                if (choice == 1)
-                {
-                    importFile();
-                }
-
-
-                else
-                {
-
-                }
             }
 
-
+            return true;
         }
+
         //this method takes the word from text file/ store them in a list
-        static void importFile()
+        private static void importWordsFromFile()
         {
             
             string w;//word in the file
-            int c = 0;//counting the words
-
-            //each word you find in the file will be added to a List 
-            IList<string> words = new List<string>();
+            int counter = 0;//counting the words
 
             //read a text file 
-            StreamReader import = new StreamReader("Words.txt");
+            StreamReader read = new StreamReader("Words.txt");
 
             Console.WriteLine("Reading Words");
-
+            
             //each word is taken from the file
-            w = import.ReadLine();
-
-            do
+            //w = import.ReadLine();
+            while ((w = read.ReadLine()) != null)
             {
                 words.Add(w); //each word is added to the list
-                c++;
+                counter++;
             }
-            while (w != null);
 
             Console.WriteLine("Reading Words Complete");
-            Console.WriteLine("Number of words found: {0}", c);
+            Console.WriteLine("Number of words found: {0}", counter);
             
         }
+
+
+        /*
+         * this method accepts a list of strings and 
+         * provides a bubble sort on the collection
+         */
+        private static IList<string> BubbleSort(IList<string> words)
+        {
+
+            //Stopwatch measures time elapsed
+
+            Stopwatch time = Stopwatch.StartNew();
+
+            string temp;
+
+            for (int i = 0; i < (words.Count - 1); i++)
+            {
+                for (int j = i + 1; j < words.Count; j++)
+                {
+                    if (words[j].CompareTo(words[i]) < 0)
+                    {
+                        temp = words[j];
+                        words[j] = words[i];
+                        words[i] = temp;
+                    }
+                }
+            }
+            time.Stop();//time stops
+            Console.WriteLine("Elapsed Time: {0} ms", time.ElapsedMilliseconds);
+            Console.WriteLine();
+            return words;
+        }
+
+        /*
+         * iii.	LINQ/Lambda sort words
+         */
+        private static List<string> LINQLAMBDASortWords(List<string> words)
+        {
+
+            //Stopwatch measures time elapsed
+            Stopwatch time = Stopwatch.StartNew();
+
+            var q = words.OrderBy(str => str).ToList();
+            words = q;
+
+            time.Stop(); //time stops
+            Console.WriteLine("Elapsed Time: {0} ms", time.ElapsedMilliseconds);
+            return words;
+        }
+
+        /*
+         * it counts the Distinct words
+         */
+        private static void countTheDistinctWords(List<string> words)
+        {
+            int distinctWords = (from x in words select x).Distinct().Count();
+            Console.WriteLine("The number of distinct words is: {0}", distinctWords);
+            Console.WriteLine();
+        }
+
+        /*
+         * this method takes the first 10 words
+         */
+        private static void takeTheFirst10Word(List<string> words)
+        {
+            var firstTenWord = words.Take(10).ToList();
+            foreach (var word in firstTenWord)
+            {
+                Console.WriteLine(word);
+            }
+            Console.WriteLine();
+        }
+
     }
 }
+
+
+
+
+
+    
    
 
 
