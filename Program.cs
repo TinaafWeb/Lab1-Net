@@ -132,9 +132,10 @@ namespace Lab1
          * this method accepts a list of strings and 
          * provides a bubble sort on the collection
          */
-        private static IList<string> BubbleSort(IList<string> words)
+        private static IList<string> BubbleSort(IList<string> allWords)
         {
 
+            IList<string> words = allWords.ToList();
             //Stopwatch measures time elapsed
 
             Stopwatch time = Stopwatch.StartNew();
