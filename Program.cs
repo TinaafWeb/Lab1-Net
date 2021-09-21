@@ -78,7 +78,7 @@ namespace Lab1
             }
             else if (line == "8")
             {
-                
+                fourChars(words);
             }
             else if (line == "9")
             {
@@ -222,6 +222,28 @@ namespace Lab1
            
 
         }
+
+
+        private static void fourChars(List<string> words)
+        {
+            var q = from x in words where x.Length > 4 select x;
+            int wordsWithFourChar = 0;
+
+            foreach (var word in q)
+            {
+                Console.WriteLine(word);
+                wordsWithFourChar++;
+            }
+           
+          
+        }
+
+
+
+
+
+
+
 
     }
 }
