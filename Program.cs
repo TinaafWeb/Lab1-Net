@@ -234,8 +234,9 @@ namespace Lab1
                 Console.WriteLine(word);
                 wordsWithFourChar++;
             }
-           
-          
+
+            Console.WriteLine("The number of words longer than 4 characters: {0}", wordsWithFourChar);
+
         }
 
 
