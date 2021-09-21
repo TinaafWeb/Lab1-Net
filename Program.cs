@@ -62,7 +62,7 @@ namespace Lab1
             }
             else if (line == "4")
             {
-                countTheDistinctWords(words);
+                distinctWord(words);
             }
             else if (line == "5")
             {
@@ -74,7 +74,7 @@ namespace Lab1
             }
             else if (line == "7")
             {
-                
+                endsWithD(words);
             }
             else if (line == "8")
             {
@@ -82,7 +82,7 @@ namespace Lab1
             }
             else if (line == "9")
             {
-                
+                threeChars(words);
             }
             else if (line == "x")
             {
@@ -96,7 +96,6 @@ namespace Lab1
                 Console.ResetColor();
                 Console.WriteLine();
                 Console.WriteLine();
-
 
             }
 
@@ -180,7 +179,7 @@ namespace Lab1
         /*
          * it counts the Distinct words
          */
-        private static void countTheDistinctWords(List<string> words)
+        private static void distinctWord(List<string> words)
         {
             int distinctWords = (from x in words select x).Distinct().Count();
             Console.WriteLine("The number of distinct words is: {0}", distinctWords);
@@ -204,12 +203,11 @@ namespace Lab1
          * this method counts the words that start with j
          */
         private static void startsWithJ(List<string> words)
-        {   
-
-            var q = from x in words where x.StartsWith("j") select x;
+        {
 
             //counting the words
             int startJwords = 0;
+            var q = from x in words where x.StartsWith("j") select x;
 
             foreach (var word in q)
             {
@@ -242,6 +240,51 @@ namespace Lab1
             Console.WriteLine();
 
         }
+
+        /*
+         * this method counts and shows the words that end with D
+         */
+        private static void endsWithD(List<string> words)
+        {
+
+            //Use a LINQ queryto find all the words that end with ‘d’
+            var q = from x in words where x.EndsWith("d") select x;
+            int wordEndD = 0;
+
+            foreach (var word in q)
+            {
+                Console.WriteLine(word);
+                wordEndD++;
+            }
+
+            Console.WriteLine("The number of words that end with 'd': {0}", wordEndD);
+            Console.WriteLine();
+        }
+
+
+        /*
+         * this method get and display the words 
+         * that are less than 3 characters long 
+         * and start with the letter ‘a’.
+         */
+
+        private static void threeChars(List<string> words)
+        {
+
+            var q = from x in words where x.Length < 3 && x.StartsWith("a") select x;
+            int threecharsW = 0;
+
+
+            foreach (var word in q)
+            {
+                Console.WriteLine(word);
+                threecharsW++;
+            }
+
+            Console.WriteLine("The number of words less than 3 characters and starts with 'a': {0}", threecharsW);
+            Console.WriteLine();
+        }
+
 
 
     }
