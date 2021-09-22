@@ -14,7 +14,7 @@ namespace Lab1
 {
     class Program
     {
-        //each word that is in the file will be added to a List 
+        //each word that is in the file will be added to this List 
         private static List<string> words = new List<string>();
         static void Main(string[] args)
 
@@ -134,6 +134,7 @@ namespace Lab1
             }
 
             Console.WriteLine("Reading Words Complete");
+            //display the number of words you read from the file
             Console.WriteLine("Number of words found: {0}", counter);
             Console.WriteLine();
             Console.WriteLine();
