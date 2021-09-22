@@ -6,6 +6,7 @@ using System.Diagnostics;
 /*
  * Prof Name: Amir Afrasiabi Rad
  * Name: Maryam Afshar
+ * Student#: 040885113
  * Lab1 - Hello World! An introduction to C#
  * Goal: This program Creates a typical application that 
  * accepts user input from the keyboard and processes the result.
