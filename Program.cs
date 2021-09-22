@@ -3,11 +3,18 @@ using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
-
+/*
+ * Prof Name: Amir Afrasiabi Rad
+ * Name: Maryam Afshar
+ * Lab1 - Hello World! An introduction to C#
+ * Goal: This program Creates a typical application that 
+ * accepts user input from the keyboard and processes the result.
+ */
 namespace Lab1
 {
     class Program
     {
+        //each word that is in the file will be added to a List 
         private static List<string> words = new List<string>();
         static void Main(string[] args)
 
@@ -21,6 +28,10 @@ namespace Lab1
             }
 
         }
+
+        /*
+         * This Method prints the header and menu
+         */
         private static void printMenu()
         {
             //print a header 
@@ -124,7 +135,9 @@ namespace Lab1
 
             Console.WriteLine("Reading Words Complete");
             Console.WriteLine("Number of words found: {0}", counter);
-            
+            Console.WriteLine();
+            Console.WriteLine();
+
         }
 
 
@@ -157,6 +170,7 @@ namespace Lab1
             time.Stop();
             Console.WriteLine("Elapsed Time: {0} ms", time.ElapsedMilliseconds);
             Console.WriteLine();
+            Console.WriteLine();
             return words;
         }
 
@@ -174,6 +188,8 @@ namespace Lab1
 
             time.Stop(); // time stops
             Console.WriteLine("Elapsed Time: {0} ms", time.ElapsedMilliseconds);
+            Console.WriteLine();
+            Console.WriteLine();
             return words;
         }
 
@@ -184,6 +200,7 @@ namespace Lab1
         {
             int distinctWords = (from x in words select x).Distinct().Count();
             Console.WriteLine("The number of distinct words is: {0}", distinctWords);
+            Console.WriteLine();
             Console.WriteLine();
         }
 
@@ -197,6 +214,7 @@ namespace Lab1
             {
                 Console.WriteLine(word);
             }
+            Console.WriteLine();
             Console.WriteLine();
         }
 
@@ -219,6 +237,7 @@ namespace Lab1
             //print the words that start with j
             Console.WriteLine("The number of words that start with 'j': {0}", startJwords);
             Console.WriteLine();
+            Console.WriteLine();
 
 
         }
@@ -239,6 +258,7 @@ namespace Lab1
 
             Console.WriteLine("The number of words longer than 4 characters: {0}", q.Count());
             Console.WriteLine();
+            Console.WriteLine();
 
         }
 
@@ -250,7 +270,7 @@ namespace Lab1
 
             //Use a LINQ queryto find all the words that end with ‘d’
             var q = from x in words where x.EndsWith("d") select x;
-            int wordEndD = 0;
+            int wordEndD = 0; //counting  the words
 
             foreach (var word in q)
             {
@@ -259,6 +279,7 @@ namespace Lab1
             }
 
             Console.WriteLine("The number of words that end with 'd': {0}", q.Count());
+            Console.WriteLine();
             Console.WriteLine();
         }
 
@@ -272,7 +293,10 @@ namespace Lab1
         private static void threeChars(List<string> words)
         {
 
+            //Use a LINQ queryto find all the words that are less than 3 characters long and start with the letter ‘a’.
             var q = from x in words where x.Length < 3 && x.StartsWith("a") select x;
+
+            //counting the words
             int threecharsW = 0;
 
 
@@ -283,6 +307,7 @@ namespace Lab1
             }
 
             Console.WriteLine("The number of words less than 3 characters and starts with 'a': {0}", q.Count());
+            Console.WriteLine();
             Console.WriteLine();
         }
 
