@@ -235,7 +235,7 @@ namespace Lab1
             }
 
             //print the words that start with j
-            Console.WriteLine("The number of words that start with 'j': {0}", startJwords);
+            Console.WriteLine("The number of words that start with 'j': {0}", q.Count());
             Console.WriteLine();
             Console.WriteLine();
 
