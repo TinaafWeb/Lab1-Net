@@ -118,7 +118,7 @@ namespace Lab1
         {
             
             string w;//word in the file
-            int counter = 0;//counting the words
+           // int counter = 0;//counting the words
 
             //read a text file 
             StreamReader read = new StreamReader("Words.txt");
@@ -130,12 +130,12 @@ namespace Lab1
             while ((w = read.ReadLine()) != null)
             {
                 words.Add(w); //each word is added to the list
-                counter++;
+               // counter++;
             }
 
             Console.WriteLine("Reading Words Complete");
             //display the number of words you read from the file
-            Console.WriteLine("Number of words found: {0}", counter);
+            Console.WriteLine("Number of words found: {0}", words.Count());
             Console.WriteLine();
             Console.WriteLine();
 
